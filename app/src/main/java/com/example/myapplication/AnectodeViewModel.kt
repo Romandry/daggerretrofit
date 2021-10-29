@@ -13,8 +13,9 @@ import com.example.myapplication.repository.AnecdoteRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AnectodeViewModel(var repository : AnecdoteRepository) : ViewModel() {
+class AnectodeViewModel @Inject constructor(var repository : AnecdoteRepository) : ViewModel() {
 
     var liveData = MutableLiveData<List<Anecdote>>()
     fun loadAndPutInDatabase() {

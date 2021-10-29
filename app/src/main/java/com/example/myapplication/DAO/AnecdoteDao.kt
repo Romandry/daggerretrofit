@@ -11,11 +11,11 @@ import com.example.myapplication.API.Anecdote
 interface AnecdoteDao {
 
     @Query("SELECT * FROM anecdote")
-    fun getAllAnecdotes(): List<Anecdote>
+    suspend fun getAllAnecdotes(): List<Anecdote>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addAnecdotes(anecdoteList: List<Anecdote>)
+    suspend fun addAnecdotes(anecdoteList: List<Anecdote>)
 
     @Query("DELETE FROM anecdote")
-    fun deleteAllAnecdotes()
+    suspend fun deleteAllAnecdotes()
 }

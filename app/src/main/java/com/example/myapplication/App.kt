@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.Application
+import android.content.Context
 import androidx.multidex.MultiDexApplication
 import com.example.myapplication.DI.AnecdoteComponent
 import com.example.myapplication.DI.AnecdoteModule
@@ -13,7 +14,7 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         anecdoteComponent = DaggerAnecdoteComponent.builder()
-//            .anecdoteModule(AnecdoteModule())
+                .context(this)
             .build()
     }
 

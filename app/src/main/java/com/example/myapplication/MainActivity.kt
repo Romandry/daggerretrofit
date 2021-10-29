@@ -20,7 +20,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     private var _binding : ActivityMainBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel : AnectodeViewModel
+    @Inject lateinit var viewModel : AnectodeViewModel
 
     @Inject lateinit var cat: Cat
     @Inject lateinit var anecdoteApi: AnecdoteAPI
@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var repository = AnecdoteRepository(application)
-        viewModel = ViewModelProvider(this, AnecdoteViewModelFactory(repository)).get(AnectodeViewModel::class.java)
+//        var repository = AnecdoteRepository(application)
+//        viewModel = ViewModelProvider(this, AnecdoteViewModelFactory(repository)).get(AnectodeViewModel::class.java)
         var adapter = AnecdoteAdapter(mutableListOf())
         checkConnection(viewModel)
         binding.recicle.adapter = adapter

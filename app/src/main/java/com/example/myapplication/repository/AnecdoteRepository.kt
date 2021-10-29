@@ -16,14 +16,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import javax.inject.Inject
 
-class AnecdoteRepository(application: Application) {
-    lateinit var anecdoteDao: AnecdoteDao
+class AnecdoteRepository @Inject constructor(var anecdoteDao: AnecdoteDao) {
 
-    init {
-        val database = AnecdoteDatabase.getDatabase(application)
-            anecdoteDao = database!!.getAnecdoteDao()
-    }
+
+
     private suspend fun addData(anecdoteList: List<Anecdote>) {
         anecdoteDao.addAnecdotes(anecdoteList)
     }
